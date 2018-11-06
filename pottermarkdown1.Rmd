@@ -17,3 +17,17 @@ hp_data <- read_csv("harry_potter_aggression_full.csv")
 
 test
 
+graph of harry potter v. draco malfoy act of agressions
+```{r}
+
+hp_graph <- hp_data %>%
+  filter(Name == 'Harry' | Name == "Draco Malfoy") %>%
+  select(Name, book, agg.per.mention) %>%
+  ggplot(aes(x =  book, y = agg.per.mention)) +
+  geom_col(aes(fill = Name), position='dodge') +
+  theme_classic() + 
+  coord_flip()
+
+hp_graph
+```
+
